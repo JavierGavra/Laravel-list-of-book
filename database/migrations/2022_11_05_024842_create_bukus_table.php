@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("nama");
             $table->string("pengarang");
             $table->integer("harga");
-            $table->timestamp("rilis");
+            $table->date("rilis");
             $table->timestamps();
         });
     }

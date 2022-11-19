@@ -9,6 +9,8 @@ class Buku extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id']; 
+
     public function publisher()
     {
         return $this->belongsTo(Publisher::class);
