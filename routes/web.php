@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Book;
 use App\Models\Buku;
 
@@ -43,4 +45,20 @@ Route::group(["prefix" => "/book"], function (){
 Route::group(["prefix" => "/publisher"], function (){
     Route::get('/all', [PublisherController::class, 'index']);
     Route::get('/detail/{publishers}', [PublisherController::class, 'show']);
+});
+
+Route::group(["prefix" => "/login"], function (){
+    Route::get('/', [LoginController::class, 'index']);
+    Route::get('/register', [LoginController::class, 'register']);
+    Route::post('/auth', [LoginController::class, 'auth']);
+    Route::post('/logout', [LoginController::class, 'logout']);
+});
+
+Route::group(["prefix"=>"/register"], function() {
+    Route::get('/', [RegisterController::class, 'index']);
+    Route::post('/create', [RegisterController::class,'create']);
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
 });
