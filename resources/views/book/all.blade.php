@@ -11,9 +11,9 @@
         @endif
 
         <br><br>
-        <div class="d-grid gap-2">
+        {{-- <div class="d-grid gap-2">
             <a class="btn btn-primary" type="button" href="/book/create">Create</a>
-        </div>
+        </div> --}}
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -37,12 +37,12 @@
                                 <td >{{ $buku->harga }}</td>
                                 <td>
                                     <a type="button" class="btn btn-outline-primary"  href="/book/detail/{{ $buku->id }}" >Detail</a>
-                                    <a type="button" class="btn btn-outline-warning"  href="/book/edit/{{ $buku->id }}" >Edit</a>
+                                    {{-- <a type="button" class="btn btn-outline-warning"  href="/book/edit/{{ $buku->id }}" >Edit</a>
                                     <form action="/book/delete/{{ $buku->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <button class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">Hapus</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             </tbody>

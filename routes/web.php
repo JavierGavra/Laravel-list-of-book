@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\dashboard\DashboardBookController;
 use App\Models\Book;
 use App\Models\Buku;
 
@@ -59,6 +60,18 @@ Route::group(["prefix"=>"/register"], function() {
     Route::post('/create', [RegisterController::class,'create']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
+Route::group(["prefix"=>"/dashboard"], function() {
+    Route::get('/home', function () {
+        return view('dashboard.index');
+    })->middleware('auth');
+
+    Route::group(["prefix"=>"/book"], function() {
+        Route::get('/all', [DashboardBookController::class, 'index'])->middleware('auth');
+        Route::get('/detail/{buku}', [DashboardBookController::class, 'show'])->middleware('auth');
+        Route::get('/create', [DashboardBookController::class, 'create'])->middleware('auth');
+        Route::post('/add', [DashboardBookController::class, 'store'])->middleware('auth');
+        Route::delete('/delete/{buku}', [DashboardBookController::class, 'destroy'])->middleware('auth');
+        Route::get('/edit/{buku}', [DashboardBookController::class, 'edit'])->middleware('auth');
+        Route::post('/update/{buku}', [DashboardBookController::class, 'update'])->middleware('auth');
+    });
 });

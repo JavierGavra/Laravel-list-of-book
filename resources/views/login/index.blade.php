@@ -35,7 +35,7 @@
                 <span>Remember me</span>
             </div>
             <div class="forget-pass">
-                <a href="#">Forgot Password ?</a>
+                <a href="/register">Don't have account ?</a>
             </div>
 
             <button type="submit">Log In</button>
