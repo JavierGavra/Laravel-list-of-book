@@ -7,19 +7,20 @@ use App\Models\Buku;
 use App\Models\Publisher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardBookController extends Controller
 {
     public function index()
     {
-        return view('dashboard.dashboard_book.all',[
-            'bukus'=>Buku::all()
+        return view('dashboard.book.all',[
+            'bukus'=>DB::table('bukus')->paginate(5)
         ]);
     }
 
     public function show(Buku $buku)
     {
-        return view('dashboard.dashboard_book.detail', [
+        return view('dashboard.book.detail', [
             'buku'=>$buku
         ]);    
         
@@ -27,7 +28,7 @@ class DashboardBookController extends Controller
 
     public function create()
     {
-        return view('dashboard.dashboard_book.create', [
+        return view('dashboard.book.create', [
             'publisher' => Publisher::all()
         ]);
     }
@@ -54,7 +55,7 @@ class DashboardBookController extends Controller
 
     public function edit(Buku $buku)
     {
-        return view('dashboard.dashboard_book.edit', [
+        return view('dashboard.book.edit', [
             'publisher' => Publisher::all(),
             'buku' => $buku
         ]);

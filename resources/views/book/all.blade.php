@@ -21,7 +21,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">No.</th>
                                     <th scope="col">nama</th>
                                     <th scope="col">pengarang</th>
                                     <th scope="col">harga</th>
@@ -29,9 +29,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($bukus as $buku)
+                            <?php $no = 1; ?>
+                            @foreach ($bukus as $buku)
                             <tr>
-                                <td>{{ $buku->id }}</td>
+                                <td>{{ $no++; }}</td>
                                 <td>{{ $buku->nama }}</td>
                                 <td >{{ $buku->pengarang }}</td>
                                 <td >{{ $buku->harga }}</td>
@@ -45,8 +46,8 @@
                                     </form> --}}
                                 </td>
                             </tr>
-                            </tbody>
                             @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
